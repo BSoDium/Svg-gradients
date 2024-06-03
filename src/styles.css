@@ -1,0 +1,17 @@
+:root {
+  font-family: "Roboto", sans-serif;
+  background: #141314;
+}
+
+svg {
+  font-size: 0.3rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  padding: 0.5rem;
+}
