@@ -23,27 +23,36 @@ export default function DebugAnimation() {
   });
 
   return (
-    <svg
-      width="400"
-      height="400"
-      viewBox="0 0 100 100"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
       style={{
-        border: "1px solid grey",
+        width: 400,
+        height: 400,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
         borderRadius: "2rem",
       }}
     >
-      <LinearGradient
-        start={start}
-        end={end}
-        startColor="#6e6efe"
-        endColor="#fe1efe"
-        turbulenceOptions={{
-          baseFrequency: 2,
-          numOctaves: 2,
-        }}
-        debug
-      />
-    </svg>
+      <svg
+        width="400"
+        height="400"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{}}
+      >
+        <LinearGradient
+          start={start}
+          end={end}
+          startColor="#6e6efe"
+          endColor="#fe1efe"
+          turbulenceOptions={{
+            baseFrequency: 2,
+            numOctaves: 2,
+          }}
+          debug
+        />
+      </svg>
+    </div>
   );
 }

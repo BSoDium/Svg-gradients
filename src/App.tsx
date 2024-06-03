@@ -6,6 +6,7 @@ import Banner from "./examples/Banner";
 import Flower from "./examples/Flower";
 import DebugAnimation from "./examples/DebugAnimation";
 import MultipleLayers from "./examples/MultipleLayers";
+import Text from "./examples/Text";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <MultipleLayers />
       <Sparkle />
       <Flower />
+      <Text />
     </div>
   );
 }
