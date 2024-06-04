@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import LinearGradient, { limits } from "./components/LinearGradient";
+import React from "react";
 import "./styles.css";
 import Sparkle from "./examples/Sparkle";
 import Banner from "./examples/Banner";
