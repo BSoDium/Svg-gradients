@@ -28,18 +28,33 @@ export default function LinearGradient({
   startColor = "transparent",
   endColor = "transparent",
   turbulenceOptions = {
-    baseFrequency: 2, // Needs to be chosen relative to the rendering resolution
-    numOctaves: 2, // TODO: Change this
+    baseFrequency: 2,
+    numOctaves: 2,
   },
+  standardDeviation = 0.2,
   slotProps,
   debug = false,
 }: {
+  /** The start point of the gradient as a percentage of the width and height of the SVG */
   start: [number, number];
+  /** The end point of the gradient as a percentage of the width and height of the SVG */
   end: [number, number];
+  /** The color of the start of the gradient */
   startColor?: string;
+  /** The color of the end of the gradient */
   endColor?: string;
-  turbulenceOptions?: { baseFrequency: number; numOctaves: number };
+  /** Options for the feTurbulence filter */
+  turbulenceOptions?: { 
+    /** The base frequency for the noise function. */
+    baseFrequency: number; 
+    /** The number of octaves that the noise function will generate. */
+    numOctaves: number 
+  };
+  /** Standard deviation for the Gaussian blur post processing filter */
+  standardDeviation?: number;
+  /** Props to pass to the SVG group element */
   slotProps?: Partial<React.SVGProps<SVGGElement>>;
+  /** Whether to display debug information */
   debug?: boolean;
 }) {
   if (start[0] === end[0] && start[1] === end[1]) return null;
@@ -57,11 +72,12 @@ export default function LinearGradient({
       : angle([0, 1], vector);
   const position = average(start, end, 0.3);
 
-  const filterId = useMemo(() => Math.random().toString(), []);
+  const turbulenceFilterId = useMemo(() => Math.random().toString(36).slice(2), []);
+  const blurFilterId = useMemo(() => Math.random().toString(36).slice(2), []);
 
   return (
     <>
-      <filter id={filterId}>
+      <filter id={turbulenceFilterId}>
         <feTurbulence
           type="turbulence"
           baseFrequency={turbulenceOptions.baseFrequency}
@@ -76,15 +92,18 @@ export default function LinearGradient({
           yChannelSelector="G"
         />
       </filter>
+      <filter id={blurFilterId}>
+        <feGaussianBlur in="SourceGraphic" stdDeviation={standardDeviation} />
+      </filter>
 
-      <g {...slotProps}>
+      <g {...slotProps} filter={`url(#${blurFilterId})`}>
         {startColor === "transparent" ? null : (
           <rect
             className="grain"
             width={`${width}%`}
             height={`${width}%`}
-            x={`${- width / 2}%`}
-            y={`${- width / 2}%`}
+            x={`${-width / 2}%`}
+            y={`${-width / 2}%`}
             fill={startColor}
           />
         )}
@@ -96,7 +115,7 @@ export default function LinearGradient({
           y={`${position[1]}%`}
           fill={endColor}
           style={{
-            filter: `url(#${filterId})`,
+            filter: `url(#${turbulenceFilterId})`,
             transformBox: "fill-box",
             transformOrigin: "top center",
             transform: `rotate(${rotation}rad)`,
