@@ -29,7 +29,7 @@ export default function MultipleLayers() {
           startColor="#4287f5"
           endColor="#bf42f5"
           turbulenceOptions={{
-            baseFrequency: 10,
+            baseFrequency: 2,
             numOctaves: 2,
           }}
         />
@@ -38,7 +38,7 @@ export default function MultipleLayers() {
           end={[80, 100]}
           endColor="#e0f542"
           turbulenceOptions={{
-            baseFrequency: 10,
+            baseFrequency: 2,
             numOctaves: 2,
           }}
         />
@@ -47,7 +47,7 @@ export default function MultipleLayers() {
           end={[0, 0]}
           endColor="#fcba03"
           turbulenceOptions={{
-            baseFrequency: 10,
+            baseFrequency: 2,
             numOctaves: 2,
           }}
         />
