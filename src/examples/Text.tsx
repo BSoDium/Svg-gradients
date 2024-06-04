@@ -29,7 +29,7 @@ export default function Text() {
             y="55%"
             fontFamily='"Roboto", sans-serif'
             fontSize="1.2rem"
-            fontWeight="200"
+            fontWeight="500"
             fill="white"
           >
             Hello, stranger

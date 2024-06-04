@@ -26,7 +26,7 @@ export default function Banner() {
         }}
       >
         <LinearGradient
-          start={[50, 10]}
+          start={[45, 35]}
           end={[75, 100]}
           startColor="#fde2c9"
           endColor="#ebc8b3"

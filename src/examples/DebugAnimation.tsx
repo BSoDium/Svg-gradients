@@ -17,7 +17,7 @@ export default function DebugAnimation() {
         amplitude + amplitude * Math.sin(t / 2000 + Math.PI),
         amplitude + amplitude * Math.cos(t / 2000 + Math.PI),
       ]);
-    }, 50);
+    }, 200);
 
     return () => clearInterval(interval);
   });

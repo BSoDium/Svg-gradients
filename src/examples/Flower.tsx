@@ -31,8 +31,8 @@ export default function Flower() {
           ></path>
         </mask>
         <LinearGradient
-          start={[-50, 150]}
-          end={[120, -20]}
+          start={[-20, 120]}
+          end={[150, -50]}
           startColor="#d3232f"
           endColor="#ffc7c5"
           turbulenceOptions={{

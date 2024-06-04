@@ -1,11 +1,12 @@
 {
-  "name": "react-typescript",
+  "name": "svg-gradients",
   "version": "1.0.0",
-  "description": "React and TypeScript example starter project",
+  "description": "A collection of experimental turbulence-based SVG gradients",
   "keywords": [
     "typescript",
     "react",
-    "starter"
+    "svg",
+    "gradients"
   ],
   "main": "src/index.tsx",
   "dependencies": {

@@ -30,13 +30,13 @@ export default function Sparkle() {
           />
         </mask>
         <LinearGradient
-          start={[0, 100]}
-          end={[100, 0]}
-          startColor="#4c83f0"
-          endColor="#d66675"
+          start={[0, 0]}
+          end={[100, 100]}
+          startColor="#d66675"
+          endColor="#4c83f0"
           turbulenceOptions={{
-            baseFrequency: 2,
-            numOctaves: 5,
+            baseFrequency: 1,
+            numOctaves: 2,
           }}
           slotProps={{
             mask: "url(#sparkle-mask)",

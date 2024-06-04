@@ -15,8 +15,11 @@ function angle(v1: [number, number], v2: [number, number]) {
   return Math.acos(dotProduct / magnitudeProduct);
 }
 
-function average(v1: [number, number], v2: [number, number]) {
-  return [(v1[0] + v2[0]) / 2, (v1[1] + v2[1]) / 2] as [number, number];
+function average(v1: [number, number], v2: [number, number], weight = 0.5) {
+  return [
+    v1[0] * (1 - weight) + v2[0] * weight,
+    v1[1] * (1 - weight) + v2[1] * weight,
+  ] as [number, number];
 }
 
 export default function LinearGradient({
@@ -52,7 +55,7 @@ export default function LinearGradient({
     start[0] < end[0]
       ? 2 * Math.PI - angle([0, 1], vector)
       : angle([0, 1], vector);
-  const position = average(start, end);
+  const position = average(start, end, 0.3);
 
   const filterId = useMemo(() => Math.random().toString(), []);
 
@@ -78,10 +81,10 @@ export default function LinearGradient({
         {startColor === "transparent" ? null : (
           <rect
             className="grain"
-            width="100%"
-            height="100%"
-            x="0"
-            y="0"
+            width={`${width}%`}
+            height={`${width}%`}
+            x={`${- width / 2}%`}
+            y={`${- width / 2}%`}
             fill={startColor}
           />
         )}

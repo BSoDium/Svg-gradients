@@ -43,8 +43,8 @@ export default function MultipleLayers() {
           }}
         />
         <LinearGradient
-          start={[50, 100]}
-          end={[0, 20]}
+          start={[70, 80]}
+          end={[0, 0]}
           endColor="#fcba03"
           turbulenceOptions={{
             baseFrequency: 10,
