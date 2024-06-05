@@ -12,7 +12,7 @@ export default function ShootingStar() {
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
-        filter: 'drop-shadow(0 0 2rem red)'
+        filter: 'drop-shadow(0 0 2rem #d3232f)'
       }}
     >
       <svg
@@ -33,7 +33,8 @@ export default function ShootingStar() {
         </mask>
         <LinearGradient
           start={[50, 100]}
-          end={[50, 0]}
+          end={[50, -20]}
+          startColor="transparent"
           endColor="#d3232f"
           turbulenceOptions={{
             baseFrequency: 2,
