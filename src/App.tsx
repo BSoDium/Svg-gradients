@@ -6,7 +6,8 @@ import Flower from "./examples/Flower";
 import DebugAnimation from "./examples/DebugAnimation";
 import MultipleLayers from "./examples/MultipleLayers";
 import Text from "./examples/Text";
-import ShootingStar from "./examples/ShootingStar";
+import Arch from "./examples/Arch";
+import Torus from "./examples/Torus";
 
 export default function App() {
   return (
@@ -17,7 +18,8 @@ export default function App() {
       <Sparkle />
       <Flower />
       <Text />
-      <ShootingStar />
+      <Arch />
+      <Torus />
     </div>
   );
 }

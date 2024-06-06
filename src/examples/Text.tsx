@@ -25,19 +25,19 @@ export default function Text() {
         <mask id="text-mask">
           <rect x="0" y="0" width="100" height="100" fill="black" />
           <text
-            x="20%"
-            y="55%"
+            x="10%"
+            y="60%"
             fontFamily='"Roboto", sans-serif'
-            fontSize="1.2rem"
-            fontWeight="500"
+            fontSize="2rem"
+            fontWeight="600"
             fill="white"
           >
-            Hello, stranger
+            Good day
           </text>
         </mask>
         <LinearGradient
-          start={[15, 70]}
-          end={[90, 20]}
+          start={[0, 100]}
+          end={[100, 0]}
           startColor="#4c83f0"
           endColor="#d66675"
           turbulenceOptions={{

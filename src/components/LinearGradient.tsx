@@ -10,7 +10,7 @@ export default function LinearGradient({
     baseFrequency: 2,
     numOctaves: 2,
   },
-  standardDeviation = 0.2,
+  standardDeviation = 0.1,
   slotProps,
   debug = false,
 }: GradientProps) {
@@ -19,7 +19,10 @@ export default function LinearGradient({
     return null;
 
   const vector = [end[0] - start[0], end[1] - start[1]] as [number, number];
+  /** The scale is used to determine the intensity of the displacement filter. */
   const scale = norm(vector);
+  /** The shift compensates for the displacement filter's origin being at the top left corner of the element. */
+  const shift = scale / 4;
 
   const height = Math.max(4 * scale, 100);
   const width = 4 * height;
@@ -27,7 +30,7 @@ export default function LinearGradient({
     start[0] < end[0]
       ? 2 * Math.PI - angle([0, 1], vector)
       : angle([0, 1], vector);
-  const position = average(start, end, 0.3);
+  const position = average(start, end);
 
   const turbulenceFilterId = useMemo(() => Math.random().toString(36).slice(2), []);
   const blurFilterId = useMemo(() => Math.random().toString(36).slice(2), []);
@@ -38,7 +41,7 @@ export default function LinearGradient({
   
   return (
     <>
-      <filter id={turbulenceFilterId}>
+      <filter id={turbulenceFilterId} width={`calc(100% + ${2 * scale}px`} height={`calc(100% + ${2 * scale}px`}>
         <feTurbulence
           type="turbulence"
           baseFrequency={turbulenceOptions.baseFrequency}
@@ -70,13 +73,13 @@ export default function LinearGradient({
           className="grain"
           width={`${width}%`}
           height={`${height}%`}
-          x={`${position[0] - width / 2}%`}
-          y={`${position[1]}%`}
+          x={`calc(${position[0] - width / 2}% - ${shift}px)`}
+          y={`calc(${position[1]}% - ${shift}px)`}
           fill={foregroundFill}
           style={{
             filter: `url(#${turbulenceFilterId})`,
             transformBox: "fill-box",
-            transformOrigin: "top center",
+            transformOrigin: `calc(50% + ${shift}px) ${shift}px`,
             transform: `rotate(${rotation + (reverse ? Math.PI : 0)}rad)`,
           }}
         />
@@ -87,8 +90,8 @@ export default function LinearGradient({
             className="indicator"
             width={`${width}%`}
             height={`${height}%`}
-            x={`${position[0] - width / 2}%`}
-            y={`${position[1]}%`}
+            x={`calc(${position[0] - width / 2}% - ${shift}px)`}
+            y={`calc(${position[1]}% - ${shift}px)`}
             fill="transparent"
             stroke="black"
             strokeWidth=".3"

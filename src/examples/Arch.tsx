@@ -1,8 +1,7 @@
 import LinearGradient from "../components/LinearGradient";
 import React from "react";
 
-export default function ShootingStar() {
-  
+export default function Arch() {
   return (
     <div
       style={{
@@ -12,7 +11,9 @@ export default function ShootingStar() {
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
-        filter: 'drop-shadow(0 0 2rem #d3232f)'
+        borderRadius: "2rem",
+        filter: 'drop-shadow(0 0 2rem #d3232f)',
+        border: '1px solid #363436'
       }}
     >
       <svg
@@ -40,7 +41,7 @@ export default function ShootingStar() {
             baseFrequency: 2,
             numOctaves: 2,
           }}
-          standardDeviation={0.1}
+          standardDeviation={0}
           slotProps={{
             mask: "url(#shootingstar-mask)",
           }}
