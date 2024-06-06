@@ -1,12 +1,12 @@
 import React, { useMemo } from "react";
-import { GradientProps, limits, norm } from "./Gradient";
-
+import { average, GradientProps, limits, norm } from "./Gradient";
 
 export default function RadialGradient({
   start,
   end,
   startColor = "grey",
   endColor = "transparent",
+  startRadius = 0,
   turbulenceOptions = {
     baseFrequency: 1,
     numOctaves: 2,
@@ -14,15 +14,20 @@ export default function RadialGradient({
   standardDeviation = 0.1,
   slotProps,
   debug = false,
-}: GradientProps) {
+}: GradientProps & {
+  /** The radius of the start circle */
+  startRadius?: number;
+}) {
   if (start[0] === end[0] && start[1] === end[1]) return null;
   if ([...start, ...end].some((v) => v < limits.min || v > limits.max))
     return null;
 
   const vector = [end[0] - start[0], end[1] - start[1]] as [number, number];
-  const scale = norm(vector);
+  const scale = norm(vector) - startRadius;
   const shift = scale / 8;
   const r = scale / 2;
+
+  const offsetStart = average(start, end, startRadius / (scale + startRadius));
 
   const turbulenceFilterId = useMemo(
     () => Math.random().toString(36).slice(2),
@@ -38,7 +43,7 @@ export default function RadialGradient({
           baseFrequency={turbulenceOptions.baseFrequency}
           numOctaves={turbulenceOptions.numOctaves}
           result="turbulence"
-        />  
+        />
         <feDisplacementMap
           in2="turbulence"
           in="SourceGraphic"
@@ -64,7 +69,7 @@ export default function RadialGradient({
           className="grain"
           cx={`${start[0] - shift}%`}
           cy={`${start[1] - shift}%`}
-          r={`${r}%`}
+          r={`${r + startRadius}%`}
           fill={startColor}
           style={{
             filter: `url(#${turbulenceFilterId})`,
@@ -100,8 +105,24 @@ export default function RadialGradient({
             stroke="grey"
           />
           <text x={`${start[0] + 4}%`} y={`${start[1] + 1}%`}>
-            Start
+            {startRadius ? 'Center' : 'Start'}
           </text>
+          {startRadius ? (
+            <>
+              <circle
+                className="indicator"
+                cx={`${offsetStart[0]}%`}
+                cy={`${offsetStart[1]}%`}
+                r="2%"
+                fill="white"
+                stroke="grey"
+              />
+              <text x={`${offsetStart[0] + 4}%`} y={`${offsetStart[1] + 1}%`}>
+                Start
+              </text>
+            </>
+          ) : null}
+
           <circle
             className="indicator"
             cx={`${end[0]}%`}

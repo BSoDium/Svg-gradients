@@ -30,9 +30,10 @@ export default function Torus() {
         <circle cx="50%" cy="50%" r="45" fill="white" />
         <RadialGradient
           start={[50, 50]}
-          end={[50, 95]}
+          end={[25, 25]}
           startColor="white"
           endColor="transparent"
+          startRadius={14}
           standardDeviation={0}
         />
         <circle cx="50%" cy="50%" r="25" fill="black" />

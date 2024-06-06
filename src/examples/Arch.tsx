@@ -12,13 +12,13 @@ export default function Arch() {
         justifyContent: "center",
         overflow: "hidden",
         borderRadius: "2rem",
-        filter: 'drop-shadow(0 0 2rem #d3232f)',
-        border: '1px solid #363436'
+        filter: "drop-shadow(0 0 2rem #d3232f)",
+        border: "1px solid #363436",
       }}
     >
       <svg
-        width="200"
-        height="400"
+        width="400"
+        height="550"
         viewBox="0 0 50 100"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -28,7 +28,7 @@ export default function Arch() {
           <path
             fill="white"
             fill-rule="evenodd"
-            d="M 0 25 A 25 25 90 0 1 50 25 L 50 175 L 0 175 Z"
+            d="M 12.5 25 A 12.5 12.5 90 0 1 37.5 25 L 37.5 100 L 12.5 100 Z"
             clip-rule="evenodd"
           ></path>
         </mask>

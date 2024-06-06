@@ -90,8 +90,8 @@ export default function LinearGradient({
             className="indicator"
             width={`${width}%`}
             height={`${height}%`}
-            x={`calc(${position[0] - width / 2}% - ${shift}px)`}
-            y={`calc(${position[1]}% - ${shift}px)`}
+            x={`${position[0] - width / 2}%`}
+            y={`${position[1]}%`}
             fill="transparent"
             stroke="black"
             strokeWidth=".3"
