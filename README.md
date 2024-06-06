@@ -29,3 +29,4 @@ The following examples demonstrate possible use cases for the `LinearGradient` c
 - [Text](./src/examples/Text.tsx) - a text element with a gradient background
 - [Arch](./src/examples/Arch.tsx) - a more artistic composition with advanced masking techniques, featuring a transparent gradient background
 - [Torus](./src/examples/Torus.tsx) - a torus-like primitive shape built with multiple layered gradients
+- [Abstract](./src/examples/Abstract.tsx) - an abstract composition featuring a mix of masks, gradients, and shapes, showcasing the full potential of the `LinearGradient` and `RadialGradient` components
