@@ -34,6 +34,7 @@ export default function RadialGradient({
     []
   );
   const blurFilterId = useMemo(() => Math.random().toString(36).slice(2), []);
+  const maskId = useMemo(() => Math.random().toString(36).slice(2), []);
 
   return (
     <>
@@ -57,6 +58,18 @@ export default function RadialGradient({
       </filter>
 
       <g {...slotProps} filter={`url(#${blurFilterId})`}>
+        <mask id={maskId}>
+          <rect x="0" y="0" width="800%" height="800%" fill="white" />
+          <circle
+            cx={`${start[0] - shift}%`}
+            cy={`${start[1] - shift}%`}
+            r={`${r + startRadius}%`}
+            fill="black"
+            style={{
+              filter: `url(#${turbulenceFilterId})`,
+            }}
+          />
+        </mask>
         <rect
           className="grain"
           width="800%"
@@ -64,6 +77,7 @@ export default function RadialGradient({
           x="-350%"
           y="-350%"
           fill={endColor}
+          mask={`url(#${maskId})`}	
         />
         <circle
           className="grain"
@@ -105,7 +119,7 @@ export default function RadialGradient({
             stroke="grey"
           />
           <text x={`${start[0] + 4}%`} y={`${start[1] + 1}%`}>
-            {startRadius ? 'Center' : 'Start'}
+            {startRadius ? "Center" : "Start"}
           </text>
           {startRadius ? (
             <>

@@ -32,16 +32,24 @@ export default function LinearGradient({
       : angle([0, 1], vector);
   const position = average(start, end);
 
-  const turbulenceFilterId = useMemo(() => Math.random().toString(36).slice(2), []);
+  const turbulenceFilterId = useMemo(
+    () => Math.random().toString(36).slice(2),
+    []
+  );
   const blurFilterId = useMemo(() => Math.random().toString(36).slice(2), []);
+  const maskId = useMemo(() => Math.random().toString(36).slice(2), []);
 
   const backgroundFill = endColor === "transparent" ? endColor : startColor;
   const foregroundFill = endColor === "transparent" ? startColor : endColor;
   const reverse = endColor === "transparent";
-  
+
   return (
     <>
-      <filter id={turbulenceFilterId} width={`calc(100% + ${2 * scale}px`} height={`calc(100% + ${2 * scale}px`}>
+      <filter
+        id={turbulenceFilterId}
+        width={`calc(100% + ${2 * scale}px`}
+        height={`calc(100% + ${2 * scale}px`}
+      >
         <feTurbulence
           type="turbulence"
           baseFrequency={turbulenceOptions.baseFrequency}
@@ -61,6 +69,22 @@ export default function LinearGradient({
       </filter>
 
       <g {...slotProps} filter={`url(#${blurFilterId})`}>
+        <mask id={maskId}>
+          <rect x="0" y="0" width={`${width}%`} height={`${width}%`} fill="white" />
+          <rect
+            width={`${width}%`}
+            height={`${height}%`}
+            x={`calc(${position[0] - width / 2}% - ${shift}px)`}
+            y={`calc(${position[1]}% - ${shift}px)`}
+            fill="black"
+            style={{
+              filter: `url(#${turbulenceFilterId})`,
+              transformBox: "fill-box",
+              transformOrigin: `calc(50% + ${shift}px) ${shift}px`,
+              transform: `rotate(${rotation + (reverse ? Math.PI : 0)}rad)`,
+            }}
+          />
+        </mask>
         <rect
           className="grain"
           width={`${width}%`}
@@ -68,6 +92,7 @@ export default function LinearGradient({
           x={`${-width / 2}%`}
           y={`${-width / 2}%`}
           fill={backgroundFill}
+          mask={`url(#${maskId})`}
         />
         <rect
           className="grain"

@@ -8,6 +8,7 @@ import MultipleLayers from "./examples/MultipleLayers";
 import Text from "./examples/Text";
 import Arch from "./examples/Arch";
 import Torus from "./examples/Torus";
+import Abstract from "./examples/Abstract";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
       <Text />
       <Arch />
       <Torus />
+      <Abstract />
     </div>
   );
 }

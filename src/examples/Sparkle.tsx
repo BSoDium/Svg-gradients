@@ -31,7 +31,7 @@ export default function Sparkle() {
         </mask>
         <LinearGradient
           start={[0, 0]}
-          end={[100, 100]}
+          end={[90, 90]}
           startColor="#d66675"
           endColor="#4c83f0"
           turbulenceOptions={{
