@@ -77,7 +77,7 @@ export default function RadialGradient({
           x="-350%"
           y="-350%"
           fill={endColor}
-          mask={`url(#${maskId})`}	
+          mask={startColor === 'transparent' ? `url(#${maskId})` : undefined}	
         />
         <circle
           className="grain"

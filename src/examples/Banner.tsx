@@ -32,8 +32,10 @@ export default function Banner() {
           endColor="#ebc8b3"
           turbulenceOptions={{
             baseFrequency: 2,
-            numOctaves: 5,
+            numOctaves: 2,
           }}
+          standardDeviation={0}
+          debug
         />
       </svg>
       <div

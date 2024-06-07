@@ -92,7 +92,7 @@ export default function LinearGradient({
           x={`${-width / 2}%`}
           y={`${-width / 2}%`}
           fill={backgroundFill}
-          mask={`url(#${maskId})`}
+          mask={foregroundFill === 'transparent' ? `url(#${maskId})` : undefined}
         />
         <rect
           className="grain"
