@@ -35,7 +35,6 @@ export default function Banner() {
             numOctaves: 2,
           }}
           standardDeviation={0}
-          debug
         />
       </svg>
       <div

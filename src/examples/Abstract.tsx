@@ -91,8 +91,8 @@ export default function Abstract() {
           }}
         />
         <RadialGradient
-          start={[45, 35]}
-          end={[49.5, 80]}
+          start={[45, 20]}
+          end={[49.5, 85]}
           startColor="#1b1b1b"
           endColor="transparent"
           turbulenceOptions={{
@@ -120,7 +120,7 @@ export default function Abstract() {
         />
         <RadialGradient
           start={[49.5, 62]}
-          end={[49.5, 78]}
+          end={[49.5, 76]}
           startColor="transparent"
           endColor="#1b1b1b"
           turbulenceOptions={{
@@ -134,7 +134,7 @@ export default function Abstract() {
         />
         <RadialGradient
           start={[44.5, 57]}
-          end={[69.5, 82]}
+          end={[73.5, 86]}
           startColor="transparent"
           endColor="#121212"
           turbulenceOptions={{
@@ -148,7 +148,7 @@ export default function Abstract() {
         />
         <RadialGradient
           start={[44.5, 57]}
-          end={[64.5, 77]}
+          end={[62.5, 75]}
           startColor="#121212"
           endColor="transparent"
           turbulenceOptions={{

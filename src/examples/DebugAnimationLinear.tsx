@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LinearGradient from "../components/LinearGradient";
 
-export default function DebugAnimation() {
+export default function DebugAnimationLinear() {
   const [start, seStart] = useState<[number, number]>([50, 0]);
   const [end, setEnd] = useState<[number, number]>([50, 100]);
 
@@ -39,7 +39,6 @@ export default function DebugAnimation() {
         height="400"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
-        style={{}}
       >
         <LinearGradient
           start={start}

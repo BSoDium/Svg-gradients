@@ -4,7 +4,7 @@ import { average, GradientProps, limits, norm } from "./Gradient";
 export default function RadialGradient({
   start,
   end,
-  startColor = "grey",
+  startColor = "black",
   endColor = "transparent",
   startRadius = 0,
   turbulenceOptions = {
@@ -24,7 +24,7 @@ export default function RadialGradient({
 
   const vector = [end[0] - start[0], end[1] - start[1]] as [number, number];
   const scale = norm(vector) - startRadius;
-  const shift = scale / 8;
+  const shift = scale / 6;
   const r = scale / 2;
 
   const offsetStart = average(start, end, startRadius / (scale + startRadius));
@@ -77,12 +77,12 @@ export default function RadialGradient({
           x="-350%"
           y="-350%"
           fill={endColor}
-          mask={startColor === 'transparent' ? `url(#${maskId})` : undefined}	
+          mask={startColor === "transparent" ? `url(#${maskId})` : undefined}
         />
         <circle
           className="grain"
-          cx={`${start[0] - shift}%`}
-          cy={`${start[1] - shift}%`}
+          cx={`calc(${start[0]}% - ${shift}px)`}
+          cy={`calc(${start[1]}% - ${shift}px)`}
           r={`${r + startRadius}%`}
           fill={startColor}
           style={{
@@ -96,9 +96,9 @@ export default function RadialGradient({
             className="indicator"
             cx={`${start[0]}%`}
             cy={`${start[1]}%`}
-            r={`${r}%`}
+            r={`${r + startRadius}%`}
             fill="transparent"
-            stroke="grey"
+            stroke="black"
             strokeWidth=".3"
             stroke-dasharray="1"
           />
@@ -108,7 +108,7 @@ export default function RadialGradient({
             y1={`${start[1]}%`}
             x2={`${end[0]}%`}
             y2={`${end[1]}%`}
-            stroke="grey"
+            stroke="black"
           />
           <circle
             className="indicator"
@@ -116,7 +116,7 @@ export default function RadialGradient({
             cy={`${start[1]}%`}
             r="2%"
             fill="white"
-            stroke="grey"
+            stroke="black"
           />
           <text x={`${start[0] + 4}%`} y={`${start[1] + 1}%`}>
             {startRadius ? "Center" : "Start"}
@@ -129,7 +129,7 @@ export default function RadialGradient({
                 cy={`${offsetStart[1]}%`}
                 r="2%"
                 fill="white"
-                stroke="grey"
+                stroke="black"
               />
               <text x={`${offsetStart[0] + 4}%`} y={`${offsetStart[1] + 1}%`}>
                 Start
@@ -143,7 +143,7 @@ export default function RadialGradient({
             cy={`${end[1]}%`}
             r="2"
             fill="white"
-            stroke="grey"
+            stroke="black"
           />
           <text x={`${end[0] + 4}%`} y={`${end[1] + 1}%`}>
             End
