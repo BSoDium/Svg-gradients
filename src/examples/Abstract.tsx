@@ -91,9 +91,9 @@ export default function Abstract() {
           }}
         />
         <RadialGradient
-          start={[49.5, 42]}
-          end={[49.5, 75]}
-          startColor="hsla(0, 0%, 8%, 0.9)"
+          start={[45, 35]}
+          end={[49.5, 80]}
+          startColor="#1b1b1b"
           endColor="transparent"
           turbulenceOptions={{
             baseFrequency: 1.9,
@@ -120,9 +120,9 @@ export default function Abstract() {
         />
         <RadialGradient
           start={[49.5, 62]}
-          end={[49.5, 74]}
-          startColor="#5454546e"
-          endColor="hsla(0, 0%, 9%, 0.922)"
+          end={[49.5, 78]}
+          startColor="transparent"
+          endColor="#1b1b1b"
           turbulenceOptions={{
             baseFrequency: 1.9,
             numOctaves: 2,
@@ -133,9 +133,23 @@ export default function Abstract() {
           }}
         />
         <RadialGradient
-          start={[49.5, 62]}
-          end={[49.5, 100]}
-          startColor="#121212e6"
+          start={[44.5, 57]}
+          end={[69.5, 82]}
+          startColor="transparent"
+          endColor="#121212"
+          turbulenceOptions={{
+            baseFrequency: 1.9,
+            numOctaves: 2,
+          }}
+          standardDeviation={0}
+          slotProps={{
+            mask: "url(#lower-large-quarter-circle-mask)",
+          }}
+        />
+        <RadialGradient
+          start={[44.5, 57]}
+          end={[64.5, 77]}
+          startColor="#121212"
           endColor="transparent"
           turbulenceOptions={{
             baseFrequency: 1.9,
